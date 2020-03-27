@@ -23,9 +23,7 @@ class puppet_metadata_service::db_server::mongodb(
   }
 
   if $facts['os']['family'] == 'RedHat' {
-    class { 'mongodb::client':
-      require => Class['mongodb::server'],
-    }
+    class { 'mongodb::client': }
   }
 
   mongodb::db { 'puppet':
