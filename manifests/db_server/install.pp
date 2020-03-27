@@ -7,7 +7,7 @@ class puppet_metadata_service::db_server::install(
     mode   => '0755',
   }
 
-  file { '/etc/puppetlabs/facter/facter.d':
+  file { '/etc/puppetlabs/facter/facts.d':
     ensure => directory,
     mode   => '0755',
   }
