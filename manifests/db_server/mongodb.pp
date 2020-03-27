@@ -28,7 +28,7 @@ class puppet_metadata_service::db_server::mongodb(
     }
   }
 
-  mogodb::db { 'puppet':
+  mongodb::db { 'puppet':
     user     => 'puppet',
     password => 'puppet',
     require  => Class['mongodb::server'],
