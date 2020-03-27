@@ -5,10 +5,10 @@ class puppet_metadata_service::db_server::mongodb(
   Optional[String] $admpass = 'puppetadm',
 ) {
 
-  class { 'mongodb::globals':
-    manage_package_repo => true,
-    before              => Class['mongodb::server'],
-  }
+  #class { 'mongodb::globals':
+  #  manage_package_repo => true,
+  #  before              => Class['mongodb::server'],
+  #}
 
   class { 'mongodb::server':
     ensure         => present,
