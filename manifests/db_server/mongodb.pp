@@ -5,18 +5,10 @@ class puppet_metadata_service::db_server::mongodb(
   Optional[String] $admpass = 'puppetadm',
 ) {
 
-  group { 'mongodb':
-    ensure => present,
-  }
-
-  user { 'mongodb':
-    ensure => present,
-  }
-
   class { 'mongodb::globals':
     server_package_name => 'mongodb-org-server',
-    client_package_name => 'mongodb-org-shell',
-    require             => User['mongodb'],
+    user                => 'root',
+    group               => 'root',
     before              => Class['mongodb::server'],
   }
 
@@ -32,7 +24,10 @@ class puppet_metadata_service::db_server::mongodb(
   }
 
   if $facts['os']['family'] == 'RedHat' {
-    class { 'mongodb::client': }
+    class { 'mongodb::client':
+      ensure       => present,
+      package_name => 'mongodb-org-shell',
+    }
   }
 
   mongodb::db { 'puppet':
