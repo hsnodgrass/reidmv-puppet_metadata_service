@@ -7,6 +7,8 @@ class puppet_metadata_service::db_server::mongodb(
 
   class { 'mongodb::globals':
     server_package_name => 'mongodb-org-server',
+    user                => 'mongod',
+    group               => 'mongod',
     before              => Class['mongodb::server'],
   }
 
