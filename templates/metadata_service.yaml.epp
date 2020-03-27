@@ -1,0 +1,4 @@
+<%- | String $db_type | -%>
+---
+puppet_metadata_service:
+  db_type: <%= $db_type %>

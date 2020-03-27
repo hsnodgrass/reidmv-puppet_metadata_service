@@ -2,14 +2,17 @@
 
 #### Table of Contents
 
-1. [Description](#description)
-2. [Setup - The basics of getting started with puppet_metadata_service](#setup)
-    * [What puppet_metadata_service affects](#what-puppet_metadata_service-affects)
-    * [Setup requirements](#setup-requirements)
-    * [Beginning with puppet_metadata_service](#beginning-with-puppet_metadata_service)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
+- [Puppet Metadata Service module](#puppet-metadata-service-module)
+      - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Setup](#setup)
+    - [Setup Requirements](#setup-requirements)
+    - [Beginning with puppet_metadata_service](#beginning-with-puppetmetadataservice)
+  - [Usage](#usage)
+  - [Reference](#reference)
+  - [Limitations](#limitations)
+  - [Development](#development)
+  - [Release Notes/Contributors/Etc. **Optional**](#release-notescontributorsetc-optional)
 
 ## Description
 
@@ -23,7 +26,7 @@ This module contains:
 * Tasks for initializing a Cassandra schema for the Puppet metadata service
 * Tasks to perform CRUD operations on data in the Puppet metadata service
 * Hiera 5 backend for the Puppet metadata service
-* trusted_external_command` integration for the Puppet metadata service
+* `trusted_external_command` integration for the Puppet metadata service
 
 ## Setup
 

@@ -1,6 +1,12 @@
 class puppet_metadata_service::puppetserver {
 
-  file { '/etc/puppetlabs/puppet/get-nodedata.rb':
+  file { '/etc/puppetlabs/puppet/metadata_service':
+    ensure => directory,
+    owner  => 'pe-puppet',
+    group  => 'pe-puppet',
+  }
+
+  file { '/etc/puppetlabs/puppet/metadata_service/get-nodedata.rb':
     ensure => file,
     owner  => 'pe-puppet',
     group  => 'pe-puppet',
@@ -8,7 +14,17 @@ class puppet_metadata_service::puppetserver {
     source => 'puppet:///modules/puppet_metadata_service/get-nodedata.rb',
   }
 
-  $hosts = puppetdb_query('resources[certname] { type = "Class" and title = "Puppet_metadata_service::Cassandra" }').map |$resource| {
+  file { '/etc/puppetlabs/puppet/metadata_service/metadata_client.rb':
+    ensure => file,
+    owner  => 'pe-puppet',
+    group  => 'pe-puppet',
+    mode   => '0755',
+    source => 'puppet:///modules/puppet_metadata_service/metadata_client.rb',
+  }
+
+  $pdbquery = 'resources[certname] { type = "Class" and title = "Puppet_metadata_service::Db_server::Install" }'
+
+  $hosts = puppetdb_query($pdbquery).map |$resource| {
     $resource['certname']
   }.sort
 
@@ -18,7 +34,7 @@ class puppet_metadata_service::puppetserver {
     group   => 'pe-puppet',
     mode    => '0640',
     content => epp('puppet_metadata_service/puppet-metadata-service.yaml.epp', {
-      hosts => $hosts
+      hosts   => $hosts,
     }),
   }
 

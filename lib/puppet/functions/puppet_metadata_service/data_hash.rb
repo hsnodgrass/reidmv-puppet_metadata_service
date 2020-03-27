@@ -1,4 +1,4 @@
-# /etc/puppetlabs/code/environments/production/modules/mymodule/lib/puppet/functions/mymodule/upcase.rb
+# /etc/puppetlabs/code/environments/production/modules/mymodule/lib/puppet/functions/puppet_metadata_service/data_hash.rb
 require 'json'
 require 'yaml'
 
