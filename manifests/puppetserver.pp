@@ -28,7 +28,7 @@ class puppet_metadata_service::puppetserver {
     $resource['certname']
   }.sort
 
-  file { '/etc/puppetlabs/puppet/puppet-metadata-service.yaml':
+  file { '/etc/puppetlabs/puppet/metadata_service/puppet-metadata-service.yaml':
     ensure  => file,
     owner   => 'pe-puppet',
     group   => 'pe-puppet',
@@ -42,7 +42,7 @@ class puppet_metadata_service::puppetserver {
     ensure  => present,
     path    => '/etc/puppetlabs/puppet/puppet.conf',
     setting => 'trusted_external_command',
-    value   => '/etc/puppetlabs/puppet/get-nodedata.rb',
+    value   => '/etc/puppetlabs/puppet/metadata_service/get-nodedata.rb',
     section => 'master',
   }
 }
