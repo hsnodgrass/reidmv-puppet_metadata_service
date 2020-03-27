@@ -1,4 +1,4 @@
-class puppet_metadata_service::db_type::mongodb(
+class puppet_metadata_service::db_server::mongodb(
   Optional[Boolean] $ipv6 = false,
   Optional[Integer] $port = 27017,
   Optional[String] $admuser = 'puppetadm',
