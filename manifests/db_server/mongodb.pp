@@ -5,6 +5,8 @@ class puppet_metadata_service::db_server::mongodb(
   Optional[String] $admpass = 'puppetadm',
 ) {
 
+  include 'mongodb'
+
   class { 'mongodb::globals':
     manage_package_repo => true,
     version             => '4.2',
