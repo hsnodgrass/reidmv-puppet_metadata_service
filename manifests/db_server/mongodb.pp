@@ -5,12 +5,8 @@ class puppet_metadata_service::db_server::mongodb(
   Optional[String] $admpass = 'puppetadm',
 ) {
 
-  class { 'mongodb::globals':
-    manage_package_repo => true,
-    version             => '4.2',
-    before              => Class['mongodb::server'],
-  }
-
+  # Manage the version in Hiera with mongodb::repo::version
+  # See https://github.com/voxpupuli/puppet-mongodb/issues/578
   class { 'mongodb::server':
     ensure         => present,
     ipv6           => $ipv6,
