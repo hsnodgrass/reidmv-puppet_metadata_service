@@ -5,9 +5,18 @@ class puppet_metadata_service::db_server::mongodb(
   Optional[String] $admpass = 'puppetadm',
 ) {
 
+  group { 'mongodb':
+    ensure => present,
+  }
+
+  user { 'mongodb':
+    ensure => present,
+  }
+
   class { 'mongodb::globals':
     server_package_name => 'mongodb-org-server',
     client_package_name => 'mongodb-org-shell',
+    require             => User['mongodb'],
     before              => Class['mongodb::server'],
   }
 
