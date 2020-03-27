@@ -86,6 +86,11 @@ class PuppetMetadataClient
   
     def get_nodedata(certname:)
       self.with_session do | session |
-
+        session.with_transaction do
+          collection = @client[:nodedata]
+          result = collection.find( {:certname => certname }, session: session).limit(1)
+        end
+      end
+      return { 'nodedata' => JSON.parse(result) }
     end
   end
