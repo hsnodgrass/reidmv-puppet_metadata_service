@@ -32,7 +32,10 @@ This module contains:
 
 ### Setup Requirements
 
-`puppetserver gem install cassandra-driver`
+`gcc` must be installed to install ruby dependencies
+
+`/opt/puppetlabs/puppet/bin/gem install cassandra-driver`
+`/opt/puppetlabs/puppet/bin/gem install mongo -v 2.12.0.rc0`
 
 ### Beginning with puppet_metadata_service
 

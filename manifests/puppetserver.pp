@@ -25,7 +25,7 @@ class puppet_metadata_service::puppetserver {
   $pdbquery = 'resources[certname] { type = "Class" and title = "Puppet_metadata_service::Db_server::Install" }'
 
   $hosts = puppetdb_query($pdbquery).map |$resource| {
-    $resource['certname']
+    [$resource['certname'], $resource['metadata_service']['db_type']]
   }.sort
 
   file { '/etc/puppetlabs/puppet/metadata_service/puppet-metadata-service.yaml':
