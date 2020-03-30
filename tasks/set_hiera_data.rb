@@ -22,7 +22,7 @@ class SetHieraData < TaskHelper
     db_type = mds_facts['db_type']
 
     # Get our DB client based on the db_type fact
-    client = PuppetMetadataClient.for(db_type: db_type, hosts: [Socket.gethostname], kwargs)
+    client = PuppetMetadataClient.for(db_type: db_type, hosts: [Socket.gethostname], **kwargs)
 
     case $db_type
     when 'cassandra'
