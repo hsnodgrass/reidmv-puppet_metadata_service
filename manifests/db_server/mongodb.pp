@@ -22,6 +22,15 @@ class puppet_metadata_service::db_server::mongodb(
     admin_username => $admuser,
     admin_password => $admpass,
     store_creds    => true,
+    replset        => 'pmdsmain',
+    replset_config => {
+      'pmdsmain' => {
+        ensure   => present,
+        members => [
+          { 'host' => "${trusted['certname']}:${port}" },
+        ]
+      }
+    }
   }
 
   if $facts['os']['family'] == 'RedHat' {
@@ -29,11 +38,5 @@ class puppet_metadata_service::db_server::mongodb(
       ensure       => present,
       package_name => 'mongodb-org-shell',
     }
-  }
-
-  mongodb_replset { 'pmdsmain':
-    ensure  => present,
-    members => ["${::ipaddress}:${port}"],
-    require => Class['mongodb::server'],
   }
 }
