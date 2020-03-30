@@ -22,11 +22,9 @@ class puppet_metadata_service::puppetserver {
     source => 'puppet:///modules/puppet_metadata_service/metadata_client.rb',
   }
 
-  $pdbquery = 'resources[certname] { type = "Class" and title = "Puppet_metadata_service::Db_server::Install" }'
+  $pdbquery = 'facts[certname,value] { name = "puppet_metadata_service" }'
 
-  $hosts = puppetdb_query($pdbquery).map |$resource| {
-    [$resource['certname'], $resource['metadata_service']['db_type']]
-  }.sort
+  $hosts = puppetdb_query($pdbquery)
 
   file { '/etc/puppetlabs/puppet/metadata_service/puppet-metadata-service.yaml':
     ensure  => file,

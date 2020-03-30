@@ -2,7 +2,6 @@
 ---
 hosts:
 <% $hosts.each |$host| { -%>
-  host:
-    - <%= $host[0] %>
-    - <%= $host[1] %>
+  <%= $host['cetname'] %>:
+    db_type: <%= $host['db_type'] %>
 <% } -%>
