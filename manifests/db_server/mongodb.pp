@@ -21,6 +21,7 @@ class puppet_metadata_service::db_server::mongodb(
     create_admin   => true,
     admin_username => $admuser,
     admin_password => $admpass,
+    store_creds    => true,
   }
 
   if $facts['os']['family'] == 'RedHat' {

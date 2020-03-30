@@ -22,7 +22,7 @@ if __FILE__ == $0
     when hosts_by_db_type.length == 1 && hosts_by_db_type.has_key?('cassandra')
       client = PuppetMetadataClient.for(db_type: 'cassandra', hosts: hosts_by_db_type['cassandra'])
     when hosts_by_db_type.length == 1 && hosts_by_db_type.has_key?('mongodb')
-      client = PuppetMetadataClient.for(db_type: 'mongodb', hosts: hosts_by_db_type['mongodb'])
+      client = PuppetMetadataClient.for(db_type: 'mongodb', hosts: hosts_by_db_type['mongodb'][0])
     else
       puts "Mixing database types is not yet supported!"
       exit(0)
