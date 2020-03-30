@@ -23,14 +23,6 @@ class puppet_metadata_service::db_server::mongodb(
     admin_password => $admpass,
     store_creds    => true,
     replset        => 'pmdsmain',
-    replset_config => {
-      'pmdsmain' => {
-        ensure   => present,
-        members => [
-          { 'host' => "${trusted['certname']}:${port}" },
-        ]
-      }
-    }
   }
 
   if $facts['os']['family'] == 'RedHat' {
