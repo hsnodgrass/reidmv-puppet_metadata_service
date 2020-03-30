@@ -31,9 +31,9 @@ class puppet_metadata_service::db_server::mongodb(
     }
   }
 
-  mongodb::db { 'puppet':
-    user     => 'puppet',
-    password => 'puppet',
-    require  => Class['mongodb::server'],
+  mongodb_replset { 'pmdsmain':
+    ensure  => present,
+    members => ["${::ipaddress}:${port}"],
+    require => Class['mongodb::server'],
   }
 }
