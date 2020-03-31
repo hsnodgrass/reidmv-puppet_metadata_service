@@ -2,6 +2,11 @@ class puppet_metadata_service::db_server::cassandra (
   String $seeds,
 ) {
 
+  package { 'cassandra-driver':
+    ensure   => present,
+    provider => 'puppet_gem',
+  }
+
   class { 'cassandra::apache_repo':
     release => '311x',
     before  => Class['cassandra'],

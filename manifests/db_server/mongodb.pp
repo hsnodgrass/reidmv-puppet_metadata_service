@@ -5,6 +5,11 @@ class puppet_metadata_service::db_server::mongodb(
   Optional[String] $admpass = 'puppetadm',
 ) {
 
+  package { 'mongo':
+    ensure   => present,
+    provider => 'puppet_gem',
+  }
+
   class { 'mongodb::globals':
     server_package_name => 'mongodb-org-server',
     user                => 'mongod',
