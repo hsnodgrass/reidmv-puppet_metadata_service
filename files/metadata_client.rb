@@ -1,14 +1,13 @@
-require 'cassandra'
-require 'mongo'
-
 # DB client factory
 class PuppetMetadataClient
   def self.for(db_type:, hosts:, **kwargs)
     kwargs.delete_if { |key, value| value.empty? }
     case db_type
     when 'cassandra'
+      require 'cassandra'
       CassandraMetadataClient.new(hosts: hosts, kwargs: kwargs)
     when 'mongodb'
+      require 'mongo'
       MongoMetadataClient.new(hosts: hosts, kwargs: kwargs)
     else
       raise "Database #{database} is not supported!"
