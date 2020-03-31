@@ -1,8 +1,10 @@
 class puppet_metadata_service::db_server::cassandra (
   String $seeds,
 ) {
-
-  package { 'cassandra-driver':
+  package { 'gcc':
+    ensure => present,
+  }
+  -> package { 'cassandra-driver':
     ensure   => present,
     provider => 'puppet_gem',
   }

@@ -4,8 +4,10 @@ class puppet_metadata_service::db_server::mongodb(
   Optional[String] $admuser = 'puppetadm',
   Optional[String] $admpass = 'puppetadm',
 ) {
-
-  package { 'mongo':
+  package { 'gcc':
+    ensure => present,
+  }
+  -> package { 'mongo':
     ensure   => present,
     provider => 'puppet_gem',
   }
