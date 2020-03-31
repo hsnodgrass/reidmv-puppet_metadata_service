@@ -1,7 +1,7 @@
 #!/opt/puppetlabs/puppet/bin/ruby
 
 require_relative "../../ruby_task_helper/files/task_helper.rb"
-require_relative '../files/metadata_client.rb'
+require_relative '../../puppet_metadata_service/files/metadata_client.rb'
 require 'json'
 require 'open3'
 require 'socket'

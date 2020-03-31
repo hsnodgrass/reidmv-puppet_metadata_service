@@ -12,6 +12,9 @@
       "description": "The hash of key/value pairs to set as data at the specified level"
     }
   },
-  "files": ["ruby_task_helper/files/task_helper.rb"],
+  "files": [
+    "ruby_task_helper/files/task_helper.rb",
+    "puppet_metadata_service/files/metadata_client.rb"
+  ],
   "input_method": "stdin"
 }

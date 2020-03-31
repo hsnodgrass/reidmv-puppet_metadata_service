@@ -8,6 +8,9 @@
       "description": "The hiera level to show data for"
     }
   },
-  "files": ["ruby_task_helper/files/task_helper.rb"],
+  "files": [
+    "ruby_task_helper/files/task_helper.rb",
+    "puppet_metadata_service/files/metadata_client.rb"
+  ],
   "input_method": "stdin"
 }
